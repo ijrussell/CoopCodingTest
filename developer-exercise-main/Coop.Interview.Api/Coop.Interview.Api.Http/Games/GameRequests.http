@@ -1,0 +1,24 @@
+﻿// curl --request POST --url https://localhost:7114/game/play --header "Content-Type: application/json" --data "{ \"action\": \"rock\" }"
+
+POST https://localhost:7114/game/play
+Content-Type: application/json
+
+{
+  "action": "rock"
+}
+
+### 
+
+
+// curl --request POST --url https://localhost:7114/game/playmultiple --header "Content-Type: application/json" --data "{ \"Actions\": [ \"rock\", \"paper\", \"scissors\" ] }"
+
+POST https://localhost:7114/game/playmultiple
+Content-Type: application/json
+
+{
+  "Actions": [
+    "rock",
+    "paper",
+    "scissors"
+  ]
+}

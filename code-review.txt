@@ -1,0 +1,15 @@
+Code Review of Coop.Interview.Api:
+
+The playmultiple action has a bug where it returns the game result and the input error message for each iteration.
+
+There are no tests.
+It's difficult to test because of the Random number generator. 
+Duplication of core game logic and game options between controller actions.
+Lots of repeated magic strings.
+It's hard to read the core game logic and difficult to check that it's correct. It will be even worse for Task 2 when there are more combinations.
+Game logic should be moved from the controller actions.
+Controller actions return Status Code 200 OK even if it returns the input error message. It should return a 400 Bad Request for invalid input.
+Uses a non-recommended form of string concatenation (+).
+Equality checking using the == operator requires that the strings match exactly, including case. It would be better to convert the player action to lower case or use String.Equals with a suitable StringComparison value.
+The way the computer action is chosen is a little odd given that there is an overload of Next that takes the limit as the input parameter, so you could use the length of the actions collection.
+As a minimum, the actions field should be marked as private readonly but it would be better to move the whole creation of actions and its contents to a new function outside the controller actions. 
